@@ -1,0 +1,43 @@
+﻿@page
+@model SportsAcademyDen.Pages.AboutModel
+
+@{
+    ViewData["Title"] = "About Us";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">About SportsAcademyDen</h1>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2 class="card-title">Welcome to SportsAcademyDen's Official Website'</h2>
+            <p class="card-text">
+                At DSportsAcademy, we are dedicated to nurturing young athletes by providing top-notch facilities and expert coaching. Our academy is designed to enhance skills, build confidence, and promote physical fitness across a variety of sports.
+            </p>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2 class="card-title">Sports We Offer</h2>
+            <ul class="list-group">
+                @foreach (var sport in Model.Sports)
+                {
+                    <li class="list-group-item">@sport.SportName</li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2 class="card-title">Our Coaching Philosophy</h2>
+            <p class="card-text">
+                Our coaches are highly trained professionals who are dedicated to helping players improve their game skills, mentality, and physical conditioning. With their wealth of experience and passion for sports, they provide personalized attention and guidance to ensure each athlete reaches their full potential.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+

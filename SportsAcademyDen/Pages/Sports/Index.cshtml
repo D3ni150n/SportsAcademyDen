@@ -1,0 +1,52 @@
+﻿@page
+@model SportsAcademyDen.Pages.Sports.IndexModel
+
+@{
+    ViewData["Title"] = "Sports";
+}
+
+<h2>Sports</h2>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Sports[0].SportName)
+                </a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Sports)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SportName)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.SportID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.SportID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.SportID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

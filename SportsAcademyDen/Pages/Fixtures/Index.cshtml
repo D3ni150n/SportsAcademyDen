@@ -1,0 +1,96 @@
+﻿@page
+@model SportsAcademyDen.Pages.Fixtures.IndexModel
+
+@{
+    ViewData["Title"] = "Fixtures";
+}
+
+<h2>Fixtures</h2>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by title:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.TitleSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Fixture[0].FixtureTitle)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fixture[0].FixtureLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fixture[0].FixtureStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fixture[0].Player.FirstMidName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fixture[0].Sport.SportName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Fixture)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FixtureTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FixtureLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FixtureStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Player.FirstMidName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sport.SportName)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.FixtureID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.FixtureID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.FixtureID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.Fixture.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Fixture.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Fixture.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Fixture.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @nextDisabled">
+    Next
+</a>
+

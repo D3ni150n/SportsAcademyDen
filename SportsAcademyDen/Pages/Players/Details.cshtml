@@ -1,0 +1,81 @@
+﻿@page
+@model SportsAcademyDen.Pages.Players.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Player</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Player.PlayerID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Player.PlayerID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Player.FirstMidName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Player.FirstMidName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Player.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Player.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Player.FixtureDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Player.FixtureDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Player.DateOfBirth)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Player.DateOfBirth)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Player.ContactNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Player.ContactNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Player.Fixtures)
+        </dt>
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>Sport Title</th>
+                    <th>Fixture Name</th>
+                    <th>Fixture Location</th>
+                </tr>
+                @foreach (var item in Model.Player.Fixtures)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sport.SportName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FixtureTitle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FixtureLocation)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Player?.PlayerID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

@@ -1,0 +1,55 @@
+﻿@page
+@model SportsAcademyDen.Pages.Fixtures.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Fixture</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Fixture.FixtureID" />
+            <div class="form-group">
+                <label asp-for="Fixture.FixtureTitle" class="control-label"></label>
+                <input asp-for="Fixture.FixtureTitle" class="form-control" />
+                <span asp-validation-for="Fixture.FixtureTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fixture.PlayerID" class="control-label"></label>
+                <select asp-for="Fixture.PlayerID" class="form-control" asp-items="ViewBag.PlayerID"></select>
+                <span asp-validation-for="Fixture.PlayerID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fixture.SportID" class="control-label"></label>
+                <select asp-for="Fixture.SportID" class="form-control" asp-items="ViewBag.SportID"></select>
+                <span asp-validation-for="Fixture.SportID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fixture.FixtureLocation" class="control-label"></label>
+                <input asp-for="Fixture.FixtureLocation" class="form-control" />
+                <span asp-validation-for="Fixture.FixtureLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fixture.FixtureStatus" class="control-label"></label>
+                <input asp-for="Fixture.FixtureStatus" class="form-control" />
+                <span asp-validation-for="Fixture.FixtureStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

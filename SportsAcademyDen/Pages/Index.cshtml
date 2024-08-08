@@ -1,0 +1,57 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="About Us">
+                <div class="card-body">
+                    <h5 class="card-title">About Us</h5>
+                    <p class="card-text">
+                        Learn more about DSportsAcademy, our mission, and how we help athletes reach their full potential.
+                    </p>
+                    <a href="@Url.Page("/About")" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Sports">
+                <div class="card-body">
+                    <h5 class="card-title">Our Sports</h5>
+                    <p class="card-text">
+                        Discover the variety of sports we offer and find out how you can get involved.
+                    </p>
+                    <a href="@Url.Page("/Sports/Index")" class="btn btn-primary">Explore Sports</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Coaches">
+                <div class="card-body">
+                    <h5 class="card-title">Our Coaches</h5>
+                    <p class="card-text">
+                        Meet our professional coaches who are dedicated to helping athletes excel in their sports.
+                    </p>
+                    <a href="@Url.Page("/Coaches/Index")" class="btn btn-primary">Meet the Coaches</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+</style>
+
+
